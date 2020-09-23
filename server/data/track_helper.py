@@ -1,7 +1,7 @@
 from google.cloud import firestore
 import data.utility_helper as utility_helper
 
-db = firestore.Client.from_service_account_json('C:\\Users\\vipul\Documents\\Personal Projects\\Milo Scheduler\\server\\firebase-key.json')
+db = firestore.Client.from_service_account_json('C:\\Users\\vipul\\Documents\\Personal Projects\\Milo Scheduler\\server\\firebase-key.json')
 
 def add_activity(activity_type):
     print('inside add activity')
