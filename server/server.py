@@ -20,7 +20,7 @@ def track():
         'Access-Control-Allow-Origin': '*'
     }
     request_json = request.get_json()
-    track_helper.add_activity()
+    track_helper.add_activity(request_json['type'])
     data = jsonify(message='Activity logged for type %s' % request_json['type'])
     return (data, 200, headers)
 
