@@ -48,6 +48,7 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
+              "baseHref": "/weighty-card-288817.appspot.com/",
               "budgets": [
                 {
                   "type": "initial",

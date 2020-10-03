@@ -6,15 +6,15 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class ApiService {
-  // baseURL = 'https://northamerica-northeast1-weighty-card-288817.cloudfunctions.net';
-  baseURL = 'http://localhost:5000';
+  baseURL = 'https://northamerica-northeast1-weighty-card-288817.cloudfunctions.net';
+  // baseURL = 'http://localhost:5000';
 
   constructor(private httpClient: HttpClient) {}
 
   trackActivity(type: ActivityType) {
     this.httpClient
       // .post(`${this.baseURL}/test-function`, { type: type })
-      .post(`${this.baseURL}/api/track`, { type: type })
+      .post(`${this.baseURL}/track-activity`, { type: type })
       .subscribe((resp) => console.log(resp));
   }
 }
