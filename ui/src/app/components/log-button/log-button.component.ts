@@ -3,18 +3,18 @@ import { ActivityType } from 'src/app/enums/activity-type.enum';
 import { ApiService } from 'src/app/services/api.service';
 
 @Component({
-  selector: 'app-log-button',
-  templateUrl: './log-button.component.html',
-  styleUrls: ['./log-button.component.scss'],
+    selector: 'app-log-button',
+    templateUrl: './log-button.component.html',
+    styleUrls: ['./log-button.component.scss']
 })
 export class LogButtonComponent implements OnInit {
-  @Input() type: ActivityType;
+    @Input() type: ActivityType;
 
-  constructor(private apiService: ApiService) {}
+    constructor(private apiService: ApiService) {}
 
-  ngOnInit(): void {}
+    ngOnInit(): void {}
 
-  click() {
-    this.apiService.trackActivity(this.type);
-  }
+    click() {
+        this.apiService.trackActivity(this.type);
+    }
 }

@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+    production: false,
+    baseURL: 'https://northamerica-northeast1-weighty-card-288817.cloudfunctions.net'
 };
 
 /*

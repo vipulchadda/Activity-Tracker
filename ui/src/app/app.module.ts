@@ -7,16 +7,9 @@ import { AppComponent } from './app.component';
 import { LogButtonComponent } from './components/log-button/log-button.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LogButtonComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [AppComponent, LogButtonComponent],
+    imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+    providers: [],
+    bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
