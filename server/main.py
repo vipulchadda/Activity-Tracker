@@ -2,11 +2,7 @@ from flask import Flask, jsonify, request
 import data.track_helper as track_helper
 import os
 
-if 'LOCAL_SERVER' in os.environ:
-    app = Flask(__name__)
 
-
-@app.route('/track_activity', methods=['OPTIONS', 'POST'])
 def track_activity():
     if request.method == 'OPTIONS':
         headers = {
@@ -27,6 +23,11 @@ def track_activity():
     data = jsonify(message='Activity logged for type %s' %
                    request_json['type'])
     return (data, 200, headers)
+
+
+if 'LOCAL_SERVER' in os.environ:
+    app = Flask(__name__)
+    app.route('/track-activity', methods=['OPTIONS', 'POST'])(track_activity)
 
 
 if __name__ == '__main__':
