@@ -3,7 +3,7 @@ import data.track_helper as track_helper
 import os
 
 
-def track_activity():
+def track_activity(request):
     if request.method == 'OPTIONS':
         headers = {
             'Access-Control-Allow-Origin': '*',
@@ -27,8 +27,10 @@ def track_activity():
 
 if 'LOCAL_SERVER' in os.environ:
     app = Flask(__name__)
-    app.route('/track-activity', methods=['OPTIONS', 'POST'])(track_activity)
 
+    @app.route('/track-activity', methods=['OPTIONS', 'POST'])
+    def call_track_activity():
+        return track_activity(request)
 
-if __name__ == '__main__':
-    app.run()
+    if __name__ == '__main__':
+        app.run()
