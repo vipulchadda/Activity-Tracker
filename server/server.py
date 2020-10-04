@@ -1,10 +1,13 @@
 from flask import Flask, jsonify, request
 import data.track_helper as track_helper
+import os
 
-app = Flask(__name__)
+if 'LOCAL_SERVER' in os.environ:
+    app = Flask(__name__)
 
-@app.route('/api/track', methods = ['OPTIONS', 'POST'])
-def track():
+
+@app.route('/track_activity', methods=['OPTIONS', 'POST'])
+def track_activity():
     if request.method == 'OPTIONS':
         headers = {
             'Access-Control-Allow-Origin': '*',
@@ -21,8 +24,10 @@ def track():
     }
     request_json = request.get_json()
     track_helper.add_activity(request_json['type'])
-    data = jsonify(message='Activity logged for type %s' % request_json['type'])
+    data = jsonify(message='Activity logged for type %s' %
+                   request_json['type'])
     return (data, 200, headers)
+
 
 if __name__ == '__main__':
     app.run()
