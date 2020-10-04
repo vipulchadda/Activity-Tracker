@@ -1,10 +1,15 @@
 from google.cloud import firestore
 import data.utility_helper as utility_helper
+import os
 
-db = firestore.Client.from_service_account_json('C:\\Users\\vipul\\Documents\\Personal Projects\\Milo Scheduler\\server\\firebase-key.json')
+if 'FIREBASE_SECRET' in os.environ:
+    db = firestore.Client.from_service_account_json(
+        os.environ['FIREBASE_SECRET'])
+else:
+    db = firestore.Client()
+
 
 def add_activity(activity_type):
-    print('inside add activity')
     activities = db.collection('activities')
     date_key = utility_helper.get_date_id()
     todays_activity = activities.document(date_key)
