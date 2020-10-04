@@ -4,7 +4,7 @@
 
 export const environment = {
     production: false,
-    baseURL: 'https://northamerica-northeast1-weighty-card-288817.cloudfunctions.net'
+    baseURL: 'http://localhost:5000'
 };
 
 /*
