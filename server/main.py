@@ -26,6 +26,7 @@ def track_activity(request):
     return (data, 200, headers)
 
 
+# Starting Flask only if running locally
 if 'LOCAL_SERVER' in os.environ:
     app = Flask(__name__)
 
