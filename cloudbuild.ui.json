@@ -14,7 +14,7 @@
     "artifacts": {
         "objects": {
             "location": "gs://weighty-card-288817.appspot.com",
-            "paths": ["ui/dist/*"]
+            "paths": ["ui/dist/activity-tracker/*"]
         }
     }
 }
