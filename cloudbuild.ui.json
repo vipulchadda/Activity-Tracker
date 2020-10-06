@@ -7,7 +7,7 @@
         },
         {
             "name": "gcr.io/cloud-builders/npm",
-            "args": ["run", "build", "--prod"],
+            "args": ["run", "build", "--", "--prod"],
             "dir": "ui"
         }
     ],
