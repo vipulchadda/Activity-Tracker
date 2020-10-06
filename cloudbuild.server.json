@@ -9,6 +9,7 @@
                 "track-activity",
                 "--source=.",
                 "--trigger-http",
+                "--runtime=python37",
                 "--project=${PROJECT_ID}"
             ]
         }
