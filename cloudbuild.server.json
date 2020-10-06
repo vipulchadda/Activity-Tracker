@@ -2,7 +2,7 @@
     "steps": [
         {
             "name": "gcr.io/cloud-builders/gcloud",
-            "args": ["functions", "deploy", ["track-activity"], "--source=.", "--trigger-http"]
+            "args": ["functions", "deploy", "track-activity", "--source=.", "--trigger-http"]
         }
     ]
 }
