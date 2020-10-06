@@ -4,6 +4,7 @@ import os
 
 
 def track_activity(request):
+    # Set CORS headers for the pre-flight request
     if request.method == 'OPTIONS':
         headers = {
             'Access-Control-Allow-Origin': '*',
