@@ -1,0 +1,18 @@
+{
+    "steps": [
+        {
+            "name": "gcr.io/cloud-builders/npm",
+            "args": ["install"]
+        },
+        {
+            "name": "gcr.io/cloud-builders/npm",
+            "args": ["run", "build", "--prod"]
+        }
+    ],
+    "artifacts": {
+        "objects": {
+            "location": "gs://weighty-card-288817.appspot.com",
+            "paths": ["dist/*"]
+        }
+    }
+}
