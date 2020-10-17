@@ -10,8 +10,11 @@ def track_activity(request):
         return ('', 204, headers)
 
     request_json = request.get_json()
-    track_helper.add_activity(
-        request_json['type'], request_json['datetime'], request_json['format'])
+    if 'datetime' in request_json:
+        track_helper.add_activity(
+            request_json['type'], request_json['datetime'], request_json['format'])
+    else:
+        track_helper.add_activity(request_json['type'])
     data = jsonify(message='Activity logged for type %s' %
                    request_json['type'])
     return (data, 200, headers)

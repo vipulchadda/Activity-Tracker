@@ -9,10 +9,10 @@ else:
     db = firestore.Client()
 
 
-def add_activity(activity_type, datetime, format):
+def add_activity(activity_type, datetime=None, format=None):
     activities = db.collection('activities')
     date_key = utility_helper.get_date_id()
-    if datetime:
+    if datetime is not None:
         date_key = utility_helper.get_date_from_string(datetime, format)
     todays_activity = activities.document(date_key)
 
