@@ -30,3 +30,9 @@ def add_activity(activity_type):
             activity_type: current_activity
         }
         todays_activity.update(data)
+
+
+def get_day_details(date, format):
+    activities = db.collection('activities')
+    date_key = utility_helper.get_date_from_string(date, format)
+    return activities.document(date_key).get().to_dict()

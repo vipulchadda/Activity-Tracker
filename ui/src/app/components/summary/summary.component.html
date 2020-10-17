@@ -1,0 +1,11 @@
+<mat-spinner *ngIf="loading" class="loader"></mat-spinner>
+<div class="summary-panel" *ngIf="summary">
+    <div *ngFor="let type of activityType | keyvalue" class="summary-section mat-elevation-z2">
+        <h4>{{ type.key }}</h4>
+        <ul>
+            <li *ngFor="let activityDate of summary[type.key]">
+                {{ activityDate | date: 'shortTime':'GMT' }}
+            </li>
+        </ul>
+    </div>
+</div>

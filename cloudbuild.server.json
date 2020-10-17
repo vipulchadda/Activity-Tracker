@@ -15,6 +15,22 @@
                 "--region=northamerica-northeast1",
                 "--project=${PROJECT_ID}"
             ]
+        },
+        {
+            "name": "gcr.io/cloud-builders/gcloud",
+            "args": [
+                "beta",
+                "functions",
+                "deploy",
+                "get-day-summary",
+                "--source=./server",
+                "--trigger-http",
+                "--runtime=python37",
+                "--entry-point=get_day_summary",
+                "--allow-unauthenticated",
+                "--region=northamerica-northeast1",
+                "--project=${PROJECT_ID}"
+            ]
         }
     ]
 }

@@ -7,7 +7,7 @@ import { ActivityType } from './enums/activity-type.enum';
     styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-    title = 'activity-tracker';
-
     activityType = ActivityType;
+    title = 'activity-tracker';
+    today = new Date();
 }

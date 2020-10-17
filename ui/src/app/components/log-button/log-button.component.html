@@ -1,1 +1,4 @@
-<button mat-raised-button color="primary" (click)="click()">{{ type }}</button>
+<button mat-raised-button color="primary" (click)="click()" [disabled]="loading">
+    <mat-spinner *ngIf="loading" diameter="20" class="loader"></mat-spinner>
+    <span>{{ type }}</span>
+</button>

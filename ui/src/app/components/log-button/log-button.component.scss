@@ -1,5 +1,22 @@
+$small: 324px;
+$medium: 610px;
 button.mat-raised-button {
     padding: 10px 30px;
     border-radius: 40px;
     margin-right: 10px;
+    min-width: 132px;
+
+    @media screen and (max-width: $medium) {
+        width: 48%;
+        margin-top: 10px;
+    }
+    @media screen and (max-width: $small) {
+        width: 100%;
+        margin-top: 10px;
+    }
+    .loader {
+        display: inline-block;
+        margin-right: 8px;
+        margin-left: -28px;
+    }
 }

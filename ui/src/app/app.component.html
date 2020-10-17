@@ -1,4 +1,16 @@
-<app-log-button [type]="activityType.PEE"></app-log-button>
-<app-log-button [type]="activityType.POOP"></app-log-button>
-<app-log-button [type]="activityType.WALK"></app-log-button>
-<app-log-button [type]="activityType.FOOD"></app-log-button>
+<div class="activity-buttons">
+    <app-log-button [type]="activityType.PEE"></app-log-button>
+    <app-log-button [type]="activityType.POOP"></app-log-button>
+    <app-log-button [type]="activityType.WALK"></app-log-button>
+    <app-log-button [type]="activityType.FOOD"></app-log-button>
+</div>
+
+<div class="summary-section">
+    <mat-expansion-panel>
+        <mat-expansion-panel-header> Today's summary </mat-expansion-panel-header>
+
+        <ng-template matExpansionPanelContent>
+            <app-summary [date]="today"></app-summary>
+        </ng-template>
+    </mat-expansion-panel>
+</div>
