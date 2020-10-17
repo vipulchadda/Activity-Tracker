@@ -2,3 +2,18 @@
     margin-top: 32px;
     max-width: 650px;
 }
+.slide-prefix {
+    margin-right: 8px;
+}
+.date-picker {
+    margin-top: 16px;
+    input {
+        padding: 12px 20px;
+        margin-right: 16px;
+        border: none;
+        border-bottom: slategrey solid 1.5px;
+    }
+}
+.activity-buttons {
+    margin-top: 16px;
+}

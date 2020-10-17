@@ -4,7 +4,7 @@
         <h4>{{ type.key }}</h4>
         <ul>
             <li *ngFor="let activityDate of summary[type.key]">
-                {{ activityDate | date: 'shortTime':'GMT' }}
+                {{ activityDate | date: 'shortTime' }}
             </li>
         </ul>
     </div>

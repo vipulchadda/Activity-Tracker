@@ -9,9 +9,11 @@ else:
     db = firestore.Client()
 
 
-def add_activity(activity_type):
+def add_activity(activity_type, datetime, format):
     activities = db.collection('activities')
     date_key = utility_helper.get_date_id()
+    if datetime:
+        date_key = utility_helper.get_date_from_string(datetime, format)
     todays_activity = activities.document(date_key)
 
     if not todays_activity.get().exists:
@@ -21,11 +23,11 @@ def add_activity(activity_type):
             'WALK': [],
             'FOOD': []
         }
-        data[activity_type].append(utility_helper.get_time())
+        data[activity_type].append(utility_helper.get_time(datetime, format))
         activities.add(data, date_key)
     else:
         current_activity = todays_activity.get().get(activity_type)
-        current_activity.append(utility_helper.get_time())
+        current_activity.append(utility_helper.get_time(datetime, format))
         data = {
             activity_type: current_activity
         }

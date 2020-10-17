@@ -11,6 +11,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
     styleUrls: ['./log-button.component.scss']
 })
 export class LogButtonComponent {
+    @Input() manual?: boolean;
+    @Input() manualTime?: any;
     @Input() type: ActivityType;
 
     loading = false;
@@ -20,7 +22,7 @@ export class LogButtonComponent {
     click() {
         this.loading = true;
         this.apiService
-            .trackActivity(this.type)
+            .trackActivity(this.type, this.manual, this.manualTime)
             .pipe(finalize(() => (this.loading = false)))
             .subscribe(
                 () => {

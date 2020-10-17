@@ -26,6 +26,13 @@ export class SummaryComponent implements OnInit {
         this.apiService
             .getSummary(this.date)
             .pipe(finalize(() => (this.loading = false)))
-            .subscribe((resp) => (this.summary = resp));
+            .subscribe((resp) => {
+                this.summary = {
+                    PEE: resp.PEE.sort(),
+                    FOOD: resp.FOOD.sort(),
+                    POOP: resp.POOP.sort(),
+                    WALK: resp.WALK.sort()
+                };
+            });
     }
 }

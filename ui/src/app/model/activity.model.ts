@@ -1,6 +1,6 @@
 export interface Activity {
-    pee: Date[];
-    poop: Date[];
-    food: Date[];
-    walk: Date[];
+    PEE: Date[];
+    POOP: Date[];
+    FOOD: Date[];
+    WALK: Date[];
 }

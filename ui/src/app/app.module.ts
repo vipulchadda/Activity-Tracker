@@ -6,6 +6,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { LogButtonComponent } from './components/log-button/log-button.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatInputModule } from '@angular/material/input';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { NgModule } from '@angular/core';
@@ -20,6 +22,8 @@ import { SummaryComponent } from './components/summary/summary.component';
         BrowserAnimationsModule,
         MatButtonModule,
         MatExpansionModule,
+        MatInputModule,
+        MatSlideToggleModule,
         MatSnackBarModule,
         MatProgressSpinnerModule
     ],

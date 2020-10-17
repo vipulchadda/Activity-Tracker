@@ -1,8 +1,18 @@
+<h3>Track Activty</h3>
+<div>
+    <span class="slide-prefix">Now</span>
+    <mat-slide-toggle color="primary" [checked]="manual" (change)="setManual($event)">Manual time</mat-slide-toggle>
+</div>
+
+<div class="date-picker" *ngIf="manual">
+    <input matInput type="datetime-local" placeholder="start date" [value]="today | date: 'yyyy-MM-ddTHH:mm'" />
+</div>
+
 <div class="activity-buttons">
-    <app-log-button [type]="activityType.PEE"></app-log-button>
-    <app-log-button [type]="activityType.POOP"></app-log-button>
-    <app-log-button [type]="activityType.WALK"></app-log-button>
-    <app-log-button [type]="activityType.FOOD"></app-log-button>
+    <app-log-button [type]="activityType.PEE" [manual]="manual" [manualTime]="manualTime?.value"></app-log-button>
+    <app-log-button [type]="activityType.POOP" [manual]="manual" [manualTime]="manualTime?.value"></app-log-button>
+    <app-log-button [type]="activityType.WALK" [manual]="manual" [manualTime]="manualTime?.value"></app-log-button>
+    <app-log-button [type]="activityType.FOOD" [manual]="manual" [manualTime]="manualTime?.value"></app-log-button>
 </div>
 
 <div class="summary-section">

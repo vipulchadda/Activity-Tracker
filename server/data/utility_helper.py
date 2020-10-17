@@ -3,12 +3,15 @@ from datetime import datetime
 
 def get_date_id(date=None):
     if date is None:
-        date = datetime.today()
-    return date.strftime('%Y%m%d')
+        date = datetime.now()
+    return date.astimezone().strftime('%Y%m%d')
 
 
-def get_time():
-    return datetime.now()
+def get_time(date_string=None, date_format=None):
+    if date_string is None:
+        return datetime.now()
+    else:
+        return datetime.strptime(date_string, date_format)
 
 
 def get_date_from_string(date_string, date_format):
