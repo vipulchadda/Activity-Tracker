@@ -19,6 +19,19 @@
         {
             "name": "gcr.io/cloud-builders/gcloud",
             "args": [
+                "alpha",
+                "functions",
+                "add-iam-policy-binding",
+                "track-activity",
+                "--region=northamerica-northeast1",
+                "--project=${PROJECT_ID}",
+                "--member=allUsers",
+                "--role=roles/cloudfunctions.invoker"
+            ]
+        },
+        {
+            "name": "gcr.io/cloud-builders/gcloud",
+            "args": [
                 "beta",
                 "functions",
                 "deploy",
@@ -30,6 +43,19 @@
                 "--allow-unauthenticated",
                 "--region=northamerica-northeast1",
                 "--project=${PROJECT_ID}"
+            ]
+        },
+        {
+            "name": "gcr.io/cloud-builders/gcloud",
+            "args": [
+                "alpha",
+                "functions",
+                "add-iam-policy-binding",
+                "get-day-summary",
+                "--region=northamerica-northeast1",
+                "--project=${PROJECT_ID}",
+                "--member=allUsers",
+                "--role=roles/cloudfunctions.invoker"
             ]
         }
     ]
