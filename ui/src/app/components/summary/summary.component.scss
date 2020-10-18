@@ -2,13 +2,8 @@
     margin: auto;
 }
 .summary-panel {
-    display: flex;
-    .summary-section {
-        margin-right: 30px;
-        padding: 0 30px;
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
+    ul {
+        list-style-type: none;
+        padding: 0;
     }
 }

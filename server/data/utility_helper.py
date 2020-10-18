@@ -1,4 +1,5 @@
 from datetime import datetime
+import dateutil.parser as parser
 
 
 def get_date_id(date=None):
@@ -7,15 +8,15 @@ def get_date_id(date=None):
     return date.astimezone().strftime('%Y%m%d')
 
 
-def get_time(date_string=None, date_format=None):
+def get_time(date_string=None):
     if date_string is None:
-        return datetime.now()
+        return datetime.now().astimezone()
     else:
-        return datetime.strptime(date_string, date_format)
+        return parser.parse(date_string).astimezone()
 
 
-def get_date_from_string(date_string, date_format):
-    return get_date_id(datetime.strptime(date_string, date_format))
+def get_date_from_string(date_string):
+    return get_date_id(parser.parse(date_string))
 
 
 def get_cors_headers(request):

@@ -14,19 +14,18 @@ export class ApiService {
 
     getSummary(date: Date): Observable<Activity> {
         const params = {
-            date: date.toLocaleDateString('en-US'),
-            format: '%m/%d/%Y'
+            date: date.toLocaleDateString('en-US')
         };
         return this.httpClient.get<Activity>(`${environment.baseURL}/get-day-summary`, { params: params });
     }
 
     trackActivity(type: ActivityType, manual: boolean, manualTime: string): Observable<TrackResponse> {
         const body: TrackRequest = {
-            type: type
+            type: type,
+            datetime: new Date().toLocaleString('en-US', { timeZoneName: 'short' })
         };
         if (manual) {
-            body.datetime = new Date(manualTime).toUTCString();
-            body.format = '%a, %d %b %Y %H:%M:%S %Z';
+            body.datetime = new Date(manualTime).toLocaleString('en-US', { timeZoneName: 'short' });
         }
         return this.httpClient.post<TrackResponse>(`${environment.baseURL}/track-activity`, body);
     }
