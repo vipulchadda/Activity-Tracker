@@ -3,12 +3,6 @@ import dateutil.parser as parser
 import dateutil.tz as tz
 
 
-def get_date_id(date=None):
-    if date is None:
-        date = datetime.now()
-    return date.strftime('%Y%m%d')
-
-
 def get_time(date_string=None, timezone=None):
     if date_string is None:
         return datetime.now().astimezone()
@@ -17,7 +11,7 @@ def get_time(date_string=None, timezone=None):
 
 
 def get_date_from_string(date_string, timezone=None):
-    return get_date_id(parser.parse(date_string).astimezone(tz.gettz(timezone)))
+    return parser.parse(date_string).astimezone(tz.gettz(timezone)).strftime('%Y%m%d')
 
 
 def get_cors_headers(request):
