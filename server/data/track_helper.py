@@ -9,12 +9,9 @@ else:
     db = firestore.Client()
 
 
-def add_activity(activity_type, datetime=None):
+def add_activity(activity_type, datetime, timezone):
     activities = db.collection('activities')
-    if datetime is not None:
-        date_key = utility_helper.get_date_from_string(datetime)
-    else:
-        date_key = utility_helper.get_date_id()
+    date_key = utility_helper.get_date_from_string(datetime, timezone)
 
     todays_activity = activities.document(date_key)
 
@@ -25,18 +22,18 @@ def add_activity(activity_type, datetime=None):
             'WALK': [],
             'FOOD': []
         }
-        data[activity_type].append(utility_helper.get_time(datetime))
+        data[activity_type].append(utility_helper.get_time(datetime, timezone))
         activities.add(data, date_key)
     else:
         current_activity = todays_activity.get().get(activity_type)
-        current_activity.append(utility_helper.get_time(datetime))
+        current_activity.append(utility_helper.get_time(datetime, timezone))
         data = {
             activity_type: current_activity
         }
         todays_activity.update(data)
 
 
-def get_day_details(date):
+def get_day_details(date, timezone):
     activities = db.collection('activities')
-    date_key = utility_helper.get_date_from_string(date)
+    date_key = utility_helper.get_date_from_string(date, timezone)
     return activities.document(date_key).get().to_dict()

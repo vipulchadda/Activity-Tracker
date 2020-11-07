@@ -10,11 +10,9 @@ def track_activity(request):
         return ('', 204, headers)
 
     request_json = request.get_json()
-    if 'datetime' in request_json:
-        track_helper.add_activity(
-            request_json['type'], request_json['datetime'])
-    else:
-        track_helper.add_activity(request_json['type'])
+    track_helper.add_activity(
+        request_json['type'], request_json['datetime'], request_json['timezone'])
+
     data = jsonify(message='Activity logged for type %s' %
                    request_json['type'])
     return (data, 200, headers)
@@ -23,7 +21,8 @@ def track_activity(request):
 def get_day_summary(request):
     headers = utility_helper.get_cors_headers(request)
 
-    data = jsonify(track_helper.get_day_details(request.args.get('date')))
+    data = jsonify(track_helper.get_day_details(
+        request.args.get('date'), request.args.get('timezone')))
     return (data, 200, headers)
 
 

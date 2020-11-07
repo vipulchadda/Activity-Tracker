@@ -9,6 +9,10 @@
             "name": "gcr.io/cloud-builders/npm",
             "args": ["run", "build", "--", "--prod"],
             "dir": "ui"
+        },
+        {
+            "name": "gcr.io/cloud-builders/gsutil",
+            "args": ["rm", "gs://weighty-card-288817.appspot.com/*"]
         }
     ],
     "artifacts": {

@@ -14,7 +14,8 @@ export class ApiService {
 
     getSummary(date: Date): Observable<Activity> {
         const params = {
-            date: date.toLocaleDateString('en-US')
+            date: date.toLocaleDateString('en-US'),
+            timezone: Intl.DateTimeFormat().resolvedOptions().timeZone
         };
         return this.httpClient.get<Activity>(`${environment.baseURL}/get-day-summary`, { params: params });
     }
@@ -22,10 +23,11 @@ export class ApiService {
     trackActivity(type: ActivityType, manual: boolean, manualTime: string): Observable<TrackResponse> {
         const body: TrackRequest = {
             type: type,
-            datetime: new Date().toLocaleString('en-US', { timeZoneName: 'short' })
+            datetime: new Date(),
+            timezone: Intl.DateTimeFormat().resolvedOptions().timeZone
         };
         if (manual) {
-            body.datetime = new Date(manualTime).toLocaleString('en-US', { timeZoneName: 'short' });
+            body.datetime = new Date(manualTime);
         }
         return this.httpClient.post<TrackResponse>(`${environment.baseURL}/track-activity`, body);
     }
