@@ -14,7 +14,7 @@ export class ApiService {
 
     getSummary(date: Date): Observable<Activity> {
         const params = {
-            date: date.toDateString(),
+            date: date.toUTCString(),
             timezone: Intl.DateTimeFormat().resolvedOptions().timeZone
         };
         return this.httpClient.get<Activity>(`${environment.baseURL}/get-day-summary`, { params: params });
