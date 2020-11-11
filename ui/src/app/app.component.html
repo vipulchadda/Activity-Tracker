@@ -9,10 +9,30 @@
 </div>
 
 <div class="activity-buttons">
-    <app-log-button [type]="activityType.PEE" [manual]="manual" [manualTime]="manualTime?.value"></app-log-button>
-    <app-log-button [type]="activityType.POOP" [manual]="manual" [manualTime]="manualTime?.value"></app-log-button>
-    <app-log-button [type]="activityType.WALK" [manual]="manual" [manualTime]="manualTime?.value"></app-log-button>
-    <app-log-button [type]="activityType.FOOD" [manual]="manual" [manualTime]="manualTime?.value"></app-log-button>
+    <app-log-button
+        [type]="activityType.PEE"
+        [manual]="manual"
+        [manualTime]="manualTime?.value"
+        (activityLogged)="refreshSummary()"
+    ></app-log-button>
+    <app-log-button
+        [type]="activityType.POOP"
+        [manual]="manual"
+        [manualTime]="manualTime?.value"
+        (activityLogged)="refreshSummary()"
+    ></app-log-button>
+    <app-log-button
+        [type]="activityType.WALK"
+        [manual]="manual"
+        [manualTime]="manualTime?.value"
+        (activityLogged)="refreshSummary()"
+    ></app-log-button>
+    <app-log-button
+        [type]="activityType.FOOD"
+        [manual]="manual"
+        [manualTime]="manualTime?.value"
+        (activityLogged)="refreshSummary()"
+    ></app-log-button>
 </div>
 
 <div class="summary-section">
@@ -20,7 +40,7 @@
         <mat-expansion-panel-header> Today's summary </mat-expansion-panel-header>
 
         <ng-template matExpansionPanelContent>
-            <app-summary [date]="today"></app-summary>
+            <app-summary [date]="today" [activityLogged]="activityLogged"></app-summary>
         </ng-template>
     </mat-expansion-panel>
 </div>

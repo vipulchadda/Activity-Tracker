@@ -1,6 +1,6 @@
 import { ActivityType } from 'src/app/enums/activity-type.enum';
 import { ApiService } from 'src/app/services/api.service';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { finalize } from 'rxjs/operators';
 import { HttpErrorResponse } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -15,6 +15,8 @@ export class LogButtonComponent {
     @Input() manualTime?: any;
     @Input() type: ActivityType;
 
+    @Output() activityLogged = new EventEmitter<boolean>();
+
     loading = false;
 
     constructor(private apiService: ApiService, private snackBar: MatSnackBar) {}
@@ -27,6 +29,7 @@ export class LogButtonComponent {
             .subscribe(
                 () => {
                     this.openSnackbar('Save successful');
+                    this.activityLogged.emit(true);
                 },
                 (error: HttpErrorResponse) => {
                     this.openSnackbar(`Save failed. Error: ${error.message}`);
